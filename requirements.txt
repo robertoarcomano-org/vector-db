@@ -1,7 +1,10 @@
 annotated-types==0.7.0
 anyio==4.14.0
+cachetools==7.1.4
 certifi==2026.6.17
+charset-normalizer==3.4.7
 deprecation==2.1.0
+faiss-cpu==1.14.3
 grpcio==1.81.1
 h11==0.16.0
 h2==4.3.0
@@ -13,7 +16,9 @@ idna==3.18
 lance-namespace==0.8.6
 lance-namespace-urllib3-client==0.8.6
 lancedb==0.33.0
+milvus-lite==3.0
 numpy==2.5.0
+orjson==3.11.9
 packaging==26.2
 pandas==3.0.3
 portalocker==3.2.0
@@ -21,8 +26,12 @@ protobuf==7.35.1
 pyarrow==24.0.0
 pydantic==2.13.4
 pydantic_core==2.46.4
+pymilvus==3.0.0
 python-dateutil==2.9.0.post0
+python-dotenv==1.2.2
 qdrant-client==1.18.0
+requests==2.34.2
+setuptools==82.0.1
 six==1.17.0
 tqdm==4.68.3
 typing-inspection==0.4.2

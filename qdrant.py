@@ -1,40 +1,3 @@
-# vector-db
-Vector db
-
-## LanceDB
-### Code
-```
-import lancedb
-import numpy as np
-
-# Apri (o crea) un database locale
-db = lancedb.connect("./mio_db")
-
-# Crea una tabella con dati vettoriali
-data = [
-    {"id": 1, "vector": [0.1, 0.2, 0.3, 0.4], "testo": "ciao mondo"},
-    {"id": 2, "vector": [0.9, 0.8, 0.1, 0.2], "testo": "hello world"},
-    {"id": 3, "vector": [0.5, 0.5, 0.5, 0.5], "testo": "foo bar"},
-]
-
-table = db.create_table("mia_tabella", data=data)
-
-# Ricerca per similarità vettoriale
-risultati = table.search([0.1, 0.2, 0.3, 0.4]).limit(2).to_pandas()
-print(risultati)
-```
-
-### Output
-```
-(.venv) berto@laptop:~/src/vector-db$ python lance-db.py 
-   id                vector       testo  _distance
-0   1  [0.1, 0.2, 0.3, 0.4]  ciao mondo        0.0
-1   3  [0.5, 0.5, 0.5, 0.5]     foo bar        0.3
-```
-
-## Qdrant
-### Code
-```
 """
 Test Qdrant — modalità in-memory (zero server, come LanceDB)
 Installa: pip install qdrant-client
@@ -202,35 +165,3 @@ print(f"  Dimensione   : {info.config.params.vectors.size}")
 print(f"  Distanza     : {info.config.params.vectors.distance}")
 
 print("\n✓ Test completato")
-```
-
-### Output
-```
-(.venv) berto@laptop:~/src/vector-db$ python qdrant.py 
-✓ Client creato
-✓ Collection 'documenti' creata
-✓ 5 punti inseriti
-
-── Ricerca base (top 3 più simili) ──
-  id=1  score=0.9996  testo='il gatto dorme sul divano'
-  id=4  score=0.9994  testo='il cane corre nel parco'
-  id=3  score=0.9239  testo='python è un linguaggio versatile'
-
-── Ricerca filtrata (solo categoria=animali) ──
-  id=1  score=0.9996  testo='il gatto dorme sul divano'
-  id=4  score=0.9994  testo='il cane corre nel parco'
-
-── Recupera punto id=3 ──
-  testo='python è un linguaggio versatile'
-  vector=[0.5, 0.5, 0.5, 0.5]
-
-── Payload aggiornato per id=1 ──
-── Punto id=5 eliminato ──
-
-── Info collection ──
-  Punti totali : 4
-  Dimensione   : 4
-  Distanza     : Cosine
-
-✓ Test completato
-```

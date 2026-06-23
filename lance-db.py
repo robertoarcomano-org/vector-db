@@ -1,8 +1,3 @@
-# vector-db
-Vector db
-
-### Code
-```
 import lancedb
 import numpy as np
 
@@ -21,12 +16,3 @@ table = db.create_table("mia_tabella", data=data)
 # Ricerca per similarità vettoriale
 risultati = table.search([0.1, 0.2, 0.3, 0.4]).limit(2).to_pandas()
 print(risultati)
-```
-
-### Output
-```
-(.venv) berto@laptop:~/src/vector-db$ python lance-db.py 
-   id                vector       testo  _distance
-0   1  [0.1, 0.2, 0.3, 0.4]  ciao mondo        0.0
-1   3  [0.5, 0.5, 0.5, 0.5]     foo bar        0.3
-```
